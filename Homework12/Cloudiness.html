@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Weather Analysis</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo navbar-brand btn btn-lg" href="index2.html">Weather Analysis</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="index2.html">Home</a></li>
+      <li class="nav-item dropdown">
+        <a class="dropdown show nav-link dropdown-toggle style="float:right;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          List
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="Temperature.html">Max Temperature</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="Humidity.html">Humidity</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="Cloudiness.html">Cloudiness</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="WindSpeeds.html">Wind Speeds</a>
+        </div>
+      <li><a href="Comparison.html">Comparison</a></li>
+      <li><a href="Data.htm">Data</a></li>
+    </ul>
+  </div>
+</nav> 
+
+<div class="container">
+    <div class=" row justify-content-md-center ">
+          <div class=" summary col-sm-7 align-self-center; margin:3px">
+              <header class="myheader" >
+                  <h1  style="font-size:3vw ">Cloudiness</h1>
+                  <hr>
+              </header>
+                <img src="output_13_0.png" width= 90%, alt="Cloudiness">
+                <p>This plot show the variation in the cloudiness as we get close to the equator. There is not a big correlation betweeen the cloudiness and the latitude</p>
+                <span class="stretch"></span>
+              </div>
+
+              <div class="summary col-sm-4 align-self-center">
+                  <header class="myheader" >
+                          <h1  style="font-size:2vw ">Visualizations</h1>
+                          <hr>
+                      </header>
+              <div class= "row">
+                  <div class="col-sm-6">
+                      <a href="Temperature.html">
+                          <img src="output_9_0.png", alt="Homework12"></a>
+                      
+                       <a href="WindSpeeds.html">
+                          <img src="output_15_0.png" alt="Homework12"></a>
+                       <span class="stretch"></span>
+                  </div>
+                  <div class="col-sm-6">
+                      <a href="Humidity.html">
+                          <img src="output_11_0.png", alt="Homework12"></a>
+
+                      <a href="Cloudiness.html">
+                          <img src="output_13_0.png", alt="Homework12"></a>
+                      <span class="stretch"></span>
+                  </div>
+
+              </div>
+    </div>
+</div>
+
+</body>

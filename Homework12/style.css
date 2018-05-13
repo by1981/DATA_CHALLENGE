@@ -1,0 +1,60 @@
+.myheader {
+
+  min-height: 40px;
+  max-width: 1000px;
+  padding: 5px;
+  font-weight: bolder;
+  color: lightseagreen;
+ 
+  content: gainsboro;
+  font-family: 'Merriweather', serif;
+}
+
+img {
+  max-width:100%;
+  object-fit:cover
+  
+}
+
+.container{
+  display: flex;
+    justify-content: space-between;
+  background-color: rgb(240, 240, 240);
+
+    flex-wrap:nowrap;
+}
+.row{
+  margin-right: 50px;
+}
+
+.dropdown-item{
+ 
+  background-color: azure;
+}
+
+.summary{
+  background-color: white;
+  margin: 23px
+}
+
+.summary img{
+  margin: 18px;
+  
+}
+
+.stretch {
+  width: 100%;
+  display: inline-block;
+  font-size: 0;
+  line-height: 0
+}
+
+p{
+  line-height: 2;
+  
+  font-stretch: expanded
+}
+
+.logo{
+  font-size: 200%
+}
