@@ -34,13 +34,13 @@ img {
 
 .summary{
   background-color: white;
-  margin: 23px
+  margin: 15px
 }
 
-.summary img{
+/* .summary img{
   margin: 18px;
   
-}
+} */
 
 .stretch {
   width: 100%;
