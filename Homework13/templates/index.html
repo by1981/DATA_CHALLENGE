@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        .bordered {
+          width: auto;
+          height: auto;
+          padding: 1px;
+          border: 1px solid rgb(177, 173, 173);
+          
+        }
+        .bordered2{
+          border: 1px solid rgb(221, 218, 218);
+          padding-left: 0px; 
+          padding-right: 0px
+        }
+      </style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission To Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" href="data:,">
+
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission To Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+<!-- Displaying Featured Image -->
+    <div class="row">
+      <div class="col-md-8">
+        <h2 >Featured Mars Image</h2>
+        <img class="img-responsive" src= "{{listings.featured}}" alt="Featured Image" style="float:center; width: auto;height:500px;">
+      </div>
+<!-- Displaying Weather -->      
+      <div class="col-md-3 text-align:text-center">
+        <div class="row bordered">
+          <h4>Current Weather on Mars</h4>
+          <h6 class="heading">{{listings.weather}} </h6>
+        </div>
+<!-- Displaying Facts -->          
+          <h4>Facts about Mars</h4>
+          {{listings.facts | safe}}
+          <!-- <table border="1" class="dataframe">
+              <thead>
+                <tr style="text-align: right;">
+                  <th></th>
+                  <th>Value</th>
+                </tr>
+                <tr>
+                  <th>Parameter</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Equatorial Diameter:</th>
+                  <td>6,792 km</td>
+                </tr>
+                <tr>
+                  <th>Polar Diameter:</th>
+                  <td>6,752 km</td>
+                </tr>
+                <tr>
+                  <th>Mass:</th>
+                  <td>6.42 x 10^23 kg (10.7% Earth)</td>
+                </tr>
+                <tr>
+                  <th>Moons:</th>
+                  <td>2 (Phobos &amp; Deimos)</td>
+                </tr>
+                <tr>
+                  <th>Orbit Distance:</th>
+                  <td>227,943,824 km (1.52 AU)</td>
+                </tr>
+                <tr>
+                  <th>Orbit Period:</th>
+                  <td>687 days (1.9 years)</td>
+                </tr>
+                <tr>
+                  <th>Surface Temperature:</th>
+                  <td>-153 to 20 °C</td>
+                </tr>
+                <tr>
+                  <th>First Record:</th>
+                  <td>2nd millennium BC</td>
+                </tr>
+                <tr>
+                  <th>Recorded By:</th>
+                  <td>Egyptian astronomers</td>
+                </tr>
+              </tbody>
+            </table> -->
+
+      </div>
+    </div>
+<!-- Displaying Hemisphere --> 
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2 >Mars Hemispheres</h2>
+        <hr>
+      </div>
+    </div>
+      
+    <div class="row">
+      <div class=" col-md-1 text-center"></div>
+      <div class=" bordered2 col-md-5 text-center">
+        <img src= {{ listings.hemisphere[0]['img_url']}} style="float:center; width: 350px;height:350px; margin-top:3px;">
+        <h4>{{listings.hemisphere[0]['title']}}</h4>
+      </div>  
+      <div class=" bordered2 col-md-5 text-center">
+          <img src= {{ listings.hemisphere[1]['img_url']}} style="float:center; width: 350px;height:350px; margin-top:3px;">
+          <h4>{{listings.hemisphere[1]['title']}}</h4>
+      </div>
+      <div class=" col-md-1 text-center"></div> 
+    </div>
+    <br>
+    <div class="row">
+        <div class=" col-md-1 text-center"></div>
+        <div class=" bordered2 col-md-5 text-center">
+          <img src= {{ listings.hemisphere[2]['img_url']}} style="float:center; width: 350px;height:350px; margin-top:3px;">
+          <h4>{{listings.hemisphere[2]['title']}}</h4>
+        </div>  
+        <div class=" bordered2 col-md-5 text-center">
+            <img src= {{ listings.hemisphere[3]['img_url']}} style="float:center; width: 350px;height:350px; margin-top:3px;">
+            <h4>{{listings.hemisphere[3]['title']}}</h4>
+        </div>
+        <div class=" col-md-1 text-center"></div>
+      </div>
+     
+  </div>
+
+</body>
+
+</html>
+
