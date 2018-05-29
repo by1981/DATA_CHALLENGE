@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UFO SIGHTING</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+  
+
+
+  
+</head>
+<!-- ---------------------------- -->
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo navbar-brand btn btn-lg" href="index2.html">UFO Sightings</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="index.html">Home</a></li>
+      
+      <li><a href="About.html">About</a></li>
+      <li><a href="Data.htm">Data</a></li>
+    </ul>
+  </div>
+</nav>
+
+<body class="body">
+  <div class="container">
+    <div class="jumbotron text-center">
+            <h1>UFO Sightings</h1>
+          </div>
+    <div class="row">
+      <div id="buttons"><button id="Previous">Previous</button>
+      <button id="Next">Next</button> 
+     </div>
+    </div><br>
+
+     
+    <div class="row">
+      <div class="filtersearch col-md-3">
+          <h4 class="header2">Filter Search</h4>
+          <div class="form-group">
+                <form id="myForm1" >Enter A Date (M/D/YYY) <br> <input type="text" id="datetime"></form><br>
+                <form id="myForm1" >Enter A State <br> <input type="text" id="state" ></form><br>
+                <form id="myForm1">Enter A City <br> <input type="text" id="city" ></form><br>
+                <form id="myForm1"> Select A Country <br><select type="button" id="country" onclick="Country()" ></select> </form> <br>
+                <form id="myForm1">Select A Shape <br> <select type="button" id="shape" onclick="Shape()" ></select></form>  <br>
+                <a id="search" class="btn btn-default">Search</a>
+          </div>
+      </div>
+      <div class="myTable col-md-9">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Country</th>
+              <th>Shape</th>
+              <th>Duration</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+              <br>
+          </tbody>
+        </table>
+      </div>
+      <!-- <div class="col-md-1"></div> -->
+    </div>
+  </div>
+
+  <script src="data.js" type="text/javascript"></script>
+  <script src="index-4.js" type="text/javascript"></script>
+  <!-- <script type="text/javascript" src="jscharts.js"></script> -->
+  
+
+  <script>
+var dataset = [];
+for (var n = 0; n < 100; n++) {
+	dataset.push ([n, Math.random()*50, Math.random()*30]);
+}
+
+var rows = d3.select("table").selectAll("tr").data(dataset)
+	.enter()
+	.append("tr")
+  ;
+  
+  var cells = rows.selectAll("td").data(function(d) { return d; })
+  	.enter()
+    .append("td")
+    .text(function(d) { return d; })
+  ;
+  
+  d3.select("#buttons").datum({portion : 0});
+  // the chain select here pushes the datum onto the up and down buttons also
+  d3.select("#buttons").select("#Previous").on ("click", function(d) {
+  	d.portion -= 15;
+    redraw (d.portion);
+  });
+   d3.select("#buttons").select("#Next").on ("click", function(d) {
+  	d.portion += 15;
+    redraw (d.portion);
+  })
+  
+  function redraw (start) {
+  	d3.select("table").selectAll("tr")
+    	.style("display", function(d,i) {
+      	return i >= start && i < start + 15 ? null : "none";
+      })
+  }
+  redraw(0);
+  </script>
+
+</body>
+
+</html>
