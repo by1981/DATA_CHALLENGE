@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>UFO SIGHTING</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
-  />
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UFO SIGHTING</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script> 
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
 </head>
 <!-- ---------------------------- -->
 
@@ -20,8 +21,10 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="About.html">Plots and Analysis</a></li>
+      <!-- <li><a href="Plots and Analysis.html">Plots and Analysis</a></li> -->
+
       
-      <li><a href="About.html">About</a></li>
       
     </ul>
   </div>
@@ -46,29 +49,46 @@
                         <h4>   Unidentified Flying Object (UFO)</h4>
                         <div class="aboutinformation">
                         <p> An unidentified flying object or "UFO" is an object perceived in the sky that is not readily identified. Most UFOs are later identified as conventional objects or phenomena. The term is widely used for claimed observations of extraterrestrial craft.</p>
-                        <p> Unexplained aerial observations have been reported throughout history. Some were undoubtedly astronomical in nature: comets, bright meteors, one or more of the five planets that can be readily seen with the naked eye, planetary conjunctions, or atmospheric optical phenomena such as parhelia and lenticular clouds. An example is Halley's Comet, which was recorded first by Chinese astronomers in 240 BC and possibly as early as 467 BC. Such sightings throughout history often were treated as supernatural portents, angels, or other religious omens. Some current-day UFO researchers have noticed similarities between some religious symbols in medieval paintings and UFO reports though the canonical and symbolic character of such images is documented by art historians placing more conventional religious interpretations on such images.</p>
-                        <p> This study of the UFOs is based on the data provided for some of the sightings from Australia, Canada, United Kingdom and United States between 2010 and 2014. A total of 23820 sightings were taken into consideration for this study during this timeline.</p>
+                        <!-- <p> Unexplained aerial observations have been reported throughout history. Some were undoubtedly astronomical in nature: comets, bright meteors, one or more of the five planets that can be readily seen with the naked eye, planetary conjunctions, or atmospheric optical phenomena such as parhelia and lenticular clouds. An example is Halley's Comet, which was recorded first by Chinese astronomers in 240 BC and possibly as early as 467 BC. Such sightings throughout history often were treated as supernatural portents, angels, or other religious omens. Some current-day UFO researchers have noticed similarities between some religious symbols in medieval paintings and UFO reports though the canonical and symbolic character of such images is documented by art historians placing more conventional religious interpretations on such images.</p> -->
+                        <p> This study is based on some of the sightings from Australia, Canada, United Kingdom and United States between 2010 and 2014. A total of 23,820 sightings were taken into consideration for this study during this timeline. A majority of the sightings were noticed in United States(22,991). The shapes of the UFOs are also analyzed, with a majority of sightings in the shape of light(5,253).</p>
                       </div>
                     </div>
                   </div>
-                  <div class="summary col-sm-3 align-self-center">
+                  <div class="col-sm-1"></div>
+                  <div class="summary col-sm-2 align-self-right">
                       <img src="146835.jpg" alt="UFO Image">
                     </div>
 
                   
                 </div>
-          <div class= "row">
-                      <div class="NumberCount col-sm-6">Country Count
-                              <img src="Bar Graph.png" alt="Country Counts">
-                      </div>            
-                      <div class="NumberCount col-sm-6">Shape Count            
-                              <img src="ShapeCounts.png" alt="Shape Counts">
+                <div class="row">
+                    <div class="container align-self-center">
+                        <div class="row col-sm-6 align-self-left">
+                            <div id="shapePlotting"></div>                   
+                        </div>
+                        <!-- <div class="row col-sm-1"></div> -->
+                        <div class="row col-sm-6 align-self-right">
+                            <div id="countryPlotting"></div>                   
+                        </div>
+                    
+                            </div><br>
+                          </div>
+                <div id="aboutufo1">
+                <p> The analysis of the sightings in United States by state show that the sightings vary by state with California having the highest number of sightings (2,687), followed by Florida(1,574) and Washington(1,278). There seems to be no pattern on the sightings.</p>
+               </div>
+                <div class="row">
+                    <div class="container align-self-center">
+                          <div class="row col-sm-12 align-self-left">
+                              <div id="statePlotting"></div>                   
+                          </div>
                       </div>
-                      <span class="stretch"></span>
-                              
-          </div>
-</div>
+                </div>
 
+                              
+          </div> -->
+</div>
+<script src="data.js" type="text/javascript"></script>        
+<script src="plots.js"></script>    
         
                           
 </body>

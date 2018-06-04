@@ -11,9 +11,10 @@ var searchBtn = document.querySelector("#search");
 // Select unique Countries from the list for the dropdown menu
 var countrydropdown=dataSet;
 var countrydropdownitem=[]
+countrydropdownitem[0]=" "
 for(i=0; i < countrydropdown.length; i++){
     var countrydrop=countrydropdown[i];
-    countrydropdownitem[i]=countrydrop.country;    
+    countrydropdownitem[i+1]=countrydrop.country;    
 }
 
 const uniqueCountry = (value, index, self) => {
@@ -25,7 +26,6 @@ var count=0;
 function Country() {
     //Build an array containing Country records.
      var countryDropDownList = uniqueCountryValues;
-    
      var btnGenerate = document.getElementById("country");
      //Add the Options to the DropDownList.
      for (var i = 0; i < countryDropDownList.length; i++) {
@@ -42,9 +42,10 @@ function Country() {
 // Select unique shapes from the list for dropdown menu
 var shapesdropdown=dataSet;
 var shapesdropdownitem=[]
+shapesdropdownitem[0]=" ";
 for(i=0; i < shapesdropdown.length; i++){
     var shapesdrop=shapesdropdown[i];
-    shapesdropdownitem[i]=shapesdrop.shape;    
+    shapesdropdownitem[i+1]=shapesdrop.shape;    
 }
 const uniqueShape = (value, index, self) => {
     return self.indexOf(value) === index;
@@ -95,6 +96,7 @@ function renderTable() {
 function handleSearchButtonClick() {
   var filterDate=dateInput.value.trim().toLowerCase();
   var filterCity = cityInput.value.trim().toLowerCase();
+  console.log(filterCity)
   var filterState = stateInput.value.trim().toLowerCase();
   var filterCountry=countryInput.value.trim().toLowerCase();
   var filterShape= shapeInput.value.trim().toLowerCase();
@@ -107,9 +109,9 @@ function handleSearchButtonClick() {
             if(filterDate){
                 addressDate=address.datetime;
                 if(filterDate===addressDate){
-                    console.log(filterDate);
+                    // console.log(filterDate);
                     return filterCity===addressCity;
-                }
+                }               
             }
             else return filterCity===addressCity
         }
@@ -118,8 +120,9 @@ function handleSearchButtonClick() {
         if(filterDate===addressDate){
             if(filterShape){
                 addressShape=address.shape.toLowerCase();
+                
                 if(filterShape===addressShape){
-                    console.log(filterShape);
+                    // console.log(filterShape);
                     return filterCity===addressCity;
                 }
             }
@@ -127,11 +130,12 @@ function handleSearchButtonClick() {
         }   
     } else if(filterShape){
         addressShape=address.shape.toLowerCase();
+        
         if(filterShape===addressShape){
             if(filterState){
                 addressState=address.state.toLowerCase();
                 if(filterState===addressState){
-                    console.log(filterState);
+                    // console.log(filterState);
                     return filterCity===addressCity;
                 }
             } else if (filterDate){
@@ -140,6 +144,13 @@ function handleSearchButtonClick() {
                     // console.log(filterDate);
                     return filterCity===addressCity;
                 }
+            }
+            else if (filterCountry){
+                addressCountry=address.country.toLowerCase();
+                if(filterCountry===addressCountry){
+                    // console.log(filterDate);
+                    return filterCity===addressCity;
+                } 
             }
             else return filterCity===addressCity
         }
@@ -150,16 +161,31 @@ function handleSearchButtonClick() {
 
   function datetime1 (address) {
     var addressDate= address.datetime.toLowerCase();
-     return addressDate === filterDate;
+    if(filterCountry){
+        country1;
+        
+    } else if (filterCity){
+        city1;
+    }
+     else return addressDate === filterDate;
   }  
   
   function country1 (address) {
     var addressCountry= address.country.toLowerCase();
-    if( filterCity){
-        city1();
-    }
-    return addressCountry === filterCountry;  
-  }
+    if(filterCity){
+            addressCity=address.city.toLowerCase();
+            if(filterCity===addressCity){
+                // console.log(filterState);
+                return filterCountry===addressCountry;
+            
+        } 
+    } else if (filterDate){
+        addressDate=address.datetime.toLowerCase();
+        if(filterDate===addressDate){
+            return addressCountry === filterCountry;
+        }   
+  }else return addressCountry === filterCountry;
+}
 
   function shape1 (address) {
     var addressShape= address.shape.toLowerCase();
@@ -198,15 +224,15 @@ function handleSearchButtonClick() {
         }
     }
     
-    else if(!filterCity){
-        console.log(filterCity + "no entry")
-        if(filterShape){
-            addressShape=address.shape.toLowerCase();
-            if(filterShape===addressShape){
-                return filterState===addressState;
-            }
-        } else return filterState===addressState;
-    }
+    // else if(!filterCity){
+    //     console.log(filterCity + "no entry")
+    //     if(filterShape){
+    //         addressShape=address.shape.toLowerCase();
+    //         if(filterShape===addressShape){
+    //             return filterState===addressState;
+    //         }
+    //     } else return filterState===addressState;
+    // }
     
 //    else if(filterShape && filterCity==" "){
 //         addressShape=address.shape.toLowerCase();
@@ -222,7 +248,7 @@ function handleSearchButtonClick() {
 
   if(filterCity){
     filtereddata = dataSet.filter(city1);
-    // console.log(filtereddata)
+    console.log(filtereddata)
   } 
   else if(filterState){
     filtereddata = dataSet.filter(state1);
@@ -245,23 +271,3 @@ renderTable();
 renderTable();
 
 
-
-
-// arr = ["jam", "beef", "cream", "jam"]
-var counts = {};
-for (var i = 0; i < countrydropdownitem.length; i++) {
-    counts[countrydropdownitem[i]] = 1 + (counts[countrydropdownitem[i]] || 0);
-}
-console.log(counts)
-
-
-var Shapecounts = {};
-for (var i = 0; i < shapesdropdownitem.length; i++) {
-    Shapecounts[shapesdropdownitem[i]] = 1 + (Shapecounts[shapesdropdownitem[i]] || 0);
-}
-
-var result = Object.keys(Shapecounts).map(function(key) {
-    return [Number(key), Shapecounts[key]];
-  });
-
-console.log(Shapecounts)

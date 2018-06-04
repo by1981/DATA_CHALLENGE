@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UFO SIGHTING</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script> 
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+</head>
+<!-- ---------------------------- -->
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="logo navbar-brand btn btn-lg" href="index2.html">UFO Sightings</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Plots and Analysis.html">Plots and Analysis</a></li>
+
+      
+      
+    </ul>
+  </div>
+</nav>
+
+<body class="body">
+  <div class="container">
+    <div class="jumbotron text-center">
+            <h1>UFO Sightings</h1>
+    </div>
+    
+<div class="row">
+<div class="container align-self-center">
+    <div class="row col-sm-6 align-self-left">
+        <div id="shapePlotting"></div>                   
+    </div>
+    <!-- <div class="row col-sm-1"></div> -->
+    <div class="row col-sm-6 align-self-right">
+        <div id="countryPlotting"></div>                   
+    </div>
+
+        </div><br>
+      </div>
+<script src="data.js" type="text/javascript"></script>        
+<script src="plots.js"></script>          
+</body>
+</html>
+
+
