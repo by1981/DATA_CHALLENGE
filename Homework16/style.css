@@ -1,0 +1,15 @@
+.tooltip {
+  position: absolute;
+  width: 90px;
+  height: 70px;
+  padding: 10px;
+  font: 12px sans-serif;
+  text-align: center;
+  color: white;
+  background: lightslategrey;
+  border: 0;
+  border-radius: 10px;
+  /* background: rgb(4, 70, 136); */
+
+}
+
