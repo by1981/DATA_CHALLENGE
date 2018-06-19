@@ -4,21 +4,14 @@ d3.select(window).on("resize", makeResponsive);
 // When the browser loads, makeResponsive() is called.
 makeResponsive();
 
-// The code for the chart is wrapped inside a function that
-// automatically resizes the chart
 function makeResponsive() {
 
-  // if the SVG area isn't empty when the browser loads,
-  // remove it and replace it with a resized version of the chart
   var svgArea = d3.select("body").select("svg");
 
-  // clear svg is not empty
   if (!svgArea.empty()) {
     svgArea.remove();
   }
 
-  // SVG wrapper dimensions are determined by the current width and
-  // height of the browser window.
   var svgWidth = window.innerWidth;
   var svgHeight = window.innerHeight;
 
@@ -41,75 +34,65 @@ function makeResponsive() {
 
   // Append group element
   var chartGroup = svg.append("g")
-    .attr("transform", `translate(${margin.left+15}, ${margin.top})`);
+    .attr("transform", `translate(${margin.left+45}, ${margin.bottom-35})`);
 
   // Read CSV
-  d3.csv("data.csv", function(err, medalData) {
-
-    // create date parser
-    // var poverty = d3.timeParse("%d-%b");
+  d3.csv("data.csv", function(err, myData) {
 
     // parse data
-    medalData.forEach(function(data) {
+    myData.forEach(function(data) {
       data.poverty = +data.poverty;
       data.stroke = +data.stroke;
       console.log(data.abbr)
     });
     // create scales
-    var xTimeScale = d3.scaleLinear()
-      .domain(d3.extent(medalData, d => d.poverty))
-      .range([0, width/1.5]);
+    var xLinearScale = d3.scaleLinear()
+      .domain(d3.extent(myData, d => d.poverty))
+      .range([0, width/1.25]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(medalData, d => d.stroke)])
+      .domain([0, d3.max(myData, d => d.stroke)])
       .range([height, 0]);
 
     // create axes
-    var xAxis = d3.axisBottom(xTimeScale);
+    var xAxis = d3.axisBottom(xLinearScale);
     var yAxis = d3.axisLeft(yLinearScale);
 
     // append axes
     chartGroup.append("g")
-      .attr("transform", `translate(0, ${height})`)
+      .attr("transform", `translate(0, ${height+5})`)
       .call(xAxis);
 
     chartGroup.append("g")
       .call(yAxis);
 
-
     // append circles
     var circlesGroup = chartGroup.selectAll("circle")
-      .data(medalData)
+      .data(myData)
       .enter()
       .append("circle")
-      .attr("cx", d => xTimeScale(d.poverty))
+      // .append("text")
+      .attr("cx", d => xLinearScale(d.poverty))
       .attr("cy", d => yLinearScale(d.stroke))
       .attr("r", "15")
       .attr("fill", "lightskyblue")
       .attr("stroke-width", ".5")
       .attr("stroke", "lightslategrey")
-      // .text( d => d.abbr)
-    // console.log(.abbr)
+      .attr("opacity", ".5")
+      // .text(d => d.abbr);
 
-    var textGroup = chartGroup.selectAll("text")
-    .data(medalData)
-    .enter()
-    .append("text")
-    .style("text-anchor","middle")
-    .style("font", "10px sans-serif")
-    .style("fill", "white")
-    // .attr("startOffset", "50%")
-    // .attr("alignment-baseline","central")
-    
-    // .attr("")
-    .attr("x", d => xTimeScale(d.poverty))
-    .attr("y", d => yLinearScale(d.stroke))
-    .text(d => d.abbr)
-    
-     
-
-    // Date formatter to display dates nicely
-    // var dateFormatter = d3.timeFormat("%d-%b");
+    var circlesGroup = chartGroup.selectAll("text.state-label")
+      .data(myData)
+      .enter()
+      .append("text")
+      .text(d => d.abbr)
+      .classed('state-label', true)
+      .style("text-anchor","middle")
+      .style("font", "10px sans-serif")
+      .style("text-align", "bottom")
+      .style("fill", "grey")
+      .attr("dx", d => xLinearScale(d.poverty))
+      .attr("dy", d => yLinearScale(d.stroke))
 
     // Step 1: Initialize Tooltip
     var toolTip = d3.tip()
@@ -118,31 +101,26 @@ function makeResponsive() {
       // .attr("height", 450)
       .offset([80, -65])
       .html(function(d) {
-        return (`<strong>${d.poverty}% Poverty<strong><hr>${d.stroke}
+        return (`<strong>${d.state}<hr><strong>${d.poverty}% Poverty<strong><hr>${d.stroke}
         % Stroke`);
       });
 
       chartGroup.append("text")
-      // Position the text
-      // Center the text:
-      // (https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor)
-      .attr("transform", `translate(${width / 3}, ${height + margin.top-15})`)
+     .attr("transform", `translate(${width / 2}, ${height + margin.top-15})`)
       .attr("text-anchor", "middle")
-      // .attr("font-size", "16px")
-      .style("font", "12px sans-serif")
+      .style("font", "15px sans-serif")
       .attr("fill", "rgb(4, 70, 136")
-      .text("Poverty");
+      .text("Poverty %");
 
       chartGroup.append("text")
-      // Position the text
-      // Center the text:
-      // (https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor)
-      .attr("transform", `translate(${margin.right-95}, ${width/3})`)
+      .attr("transform", "rotate(-90)")
       .attr("text-anchor", "middle")
+      .attr("y", 0 - (margin.left-10))
+      .attr("x", 0 - (height / 2))
       .attr("alignment-baseline","central")
-      .style("font", "12px sans-serif")
+      .style("font", "15px sans-serif")
       .attr("fill", "rgb(85, 122, 160)")
-      .text("Stroke");
+      .text("Stroke %");
     // Step 2: Create the tooltip in chartGroup.
     chartGroup.call(toolTip);
     //toolTip(chartGroup)
