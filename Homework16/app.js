@@ -11,9 +11,11 @@ function makeResponsive() {
   if (!svgArea.empty()) {
     svgArea.remove();
   }
+  var svgWidth = 1000;
+  var svgHeight = 500;
 
-  var svgWidth = window.innerWidth;
-  var svgHeight = window.innerHeight;
+  // var svgWidth = window.innerWidth;
+  // var svgHeight = window.innerHeight;
 
   var margin = {
     top: 50,
@@ -74,7 +76,7 @@ function makeResponsive() {
       // .append("text")
       .attr("cx", d => xLinearScale(d.poverty))
       .attr("cy", d => yLinearScale(d.stroke))
-      .attr("r", "15")
+      .attr("r", "13")
       .attr("fill", "lightskyblue")
       .attr("stroke-width", ".5")
       .attr("stroke", "lightslategrey")

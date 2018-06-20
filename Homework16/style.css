@@ -13,3 +13,24 @@
 
 }
 
+.jumbotron {
+  border-radius: 25px;
+  background: lightslategrey;
+  background-size: cover;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  color: white;
+  text-align: center;
+  size: 10px
+
+}
+.chart { 
+  border-radius: 5px;
+  background: rgb(222, 231, 240);
+
+}
+
+.header2{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color:grey; 
+}
